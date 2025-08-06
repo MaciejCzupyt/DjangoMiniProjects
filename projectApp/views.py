@@ -1,12 +1,11 @@
 from django.http import HttpResponse
-import datetime
+from .models import ExampleModel
+from django.views.generic.list import ListView
+
+
+class ExampleList(ListView):
+    model = ExampleModel
 
 
 def index(request):
     return HttpResponse("Hello world")
-
-
-def test(request):
-    now = datetime.datetime.now()
-    html = "Time is {}".format(now)
-    return HttpResponse(html)
