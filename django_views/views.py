@@ -1,29 +1,48 @@
-from django.http import HttpResponse
 from .models import ExampleModel, OtherModel
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 from .forms import ExampleForm
 from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 
 def index(request):
     return render(request, "django_views/index.html")
 
+# Class-based views
 
-class ExampleCreate(CreateView):
-    model = ExampleModel
+
+class OtherCreate(CreateView):
+    model = OtherModel
     fields = "__all__"
-    template_name = "django_views/function-based-views/create_view.html"
-    success_url = "/ExampleList"
-
-
-class ExampleList(ListView):
-    model = ExampleModel
+    template_name = "django_views/class-based-views/create_view.html"
+    success_url = reverse_lazy('class-based-views_list')
 
 
 class OtherList(ListView):
     model = OtherModel
+    template_name = "django_views/class-based-views/list_view.html"
+
+
+class OtherDetail(DetailView):
+    model = OtherModel
+    template_name = "django_views/class-based-views/detail_view.html"
+
+
+class OtherUpdate(UpdateView):
+    model = OtherModel
+    fields = "__all__"
+    template_name = "django_views/class-based-views/update_view.html"
+    success_url = reverse_lazy('class-based-views_list')
+
+
+class OtherDelete(DeleteView):
+    model = OtherModel
+    template_name = "django_views/class-based-views/delete_view.html"
+    success_url = reverse_lazy('class-based-views_list')
+
+# Function-based-views
 
 
 def create_view(request):

@@ -13,7 +13,8 @@
             <a href="{% url 'function-based-views_delete' data.id %}">Delete</a><br>
 {#            Description: {{ data.description }}<br/>#}
             <hr/>
-            
+        {% empty %}
+            <p>No objects exist for this model</p>
         {% endfor %}
     </div>
     <a href="{% url 'views_index' %}">Back</a>
