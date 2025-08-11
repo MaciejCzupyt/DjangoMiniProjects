@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 
 
 def index(request):
-    return HttpResponse("Hello world")
+    return render(request, "index.html")
 
 
 class ExampleList(ListView):
@@ -24,6 +24,7 @@ def create_view(request):
 
     if form.is_valid():
         form.save()
+        return HttpResponseRedirect("/function-based-views/list")
 
     context['form'] = form
     return render(request, "create_view.html", context)
@@ -45,7 +46,7 @@ def update_view(request, id):
 
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect("/" + id)
+        return HttpResponseRedirect("/function-based-views/list")
 
     context = {"form": form}
 
@@ -56,6 +57,6 @@ def delete_view(request, id):
     obj = get_object_or_404(ExampleModel, id=id)
     if request.method == "POST":
         obj.delete()
-        return HttpResponseRedirect("/ExampleList")
+        return HttpResponseRedirect("/function-based-views/list")
 
     return render(request, "delete_view.html")
