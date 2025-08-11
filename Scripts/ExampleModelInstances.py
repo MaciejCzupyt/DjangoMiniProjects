@@ -5,7 +5,7 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoProject.settings')
 django.setup()
 
-from project_app.models import ExampleModel
+from django_views.models import ExampleModel
 
 ExampleModel.objects.create(
     title="title1",

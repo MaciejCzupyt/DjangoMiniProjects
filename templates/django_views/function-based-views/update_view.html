@@ -1,0 +1,14 @@
+{#<form method="POST" enctype="multipart/form-data">#}
+{#enctype="multipart/form-data"> seems to be specifically for files#}
+{#seems to be working without it for this simple form#}
+<form method="POST">
+    {% csrf_token %}
+    {# mandatory cross site request forger protection token #}
+    {# django won't accept POST forms without this #}
+    
+    {{  form.as_p }}
+    {# render as <p>, could replace with .as_table, .as_ul etc #}
+    
+    <input type="submit" value="Update">
+</form>
+<a href="{% url 'function-based-views_list' %}">Back</a>

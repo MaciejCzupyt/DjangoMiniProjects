@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="main">
+        {%  for data in dataset %}
+            <h3>{{ data.title }}</h3>
+            <a href="{% url 'function-based-views_details' data.id %}">Details</a><br>
+            <a href="{% url 'function-based-views_update' data.id %}">Update</a><br>
+            <a href="{% url 'function-based-views_delete' data.id %}">Delete</a><br>
+{#            Description: {{ data.description }}<br/>#}
+            <hr/>
+            
+        {% endfor %}
+    </div>
+    <a href="{% url 'views_index' %}">Back</a>
+</body>
+</html>
