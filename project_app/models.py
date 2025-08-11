@@ -9,9 +9,9 @@ class ExampleModel(models.Model):
         return self.title
 
 
-# class OtherModel(models.Model):
-#     title = models.CharField(max_length=200)
-#     description = models.TextField()
-#
-#     def __str__(self):
-#         return self.description
+class OtherModel(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.description
