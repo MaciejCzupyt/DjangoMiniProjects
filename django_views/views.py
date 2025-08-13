@@ -17,7 +17,7 @@ class OtherCreate(CreateView):
     model = OtherModel
     fields = "__all__"
     template_name = "django_views/class-based-views/create_view.html"
-    success_url = reverse_lazy('class-based-views_list')
+    success_url = reverse_lazy('django_views:class-based-views_list')
 
 
 class OtherList(ListView):
@@ -34,13 +34,13 @@ class OtherUpdate(UpdateView):
     model = OtherModel
     fields = "__all__"
     template_name = "django_views/class-based-views/update_view.html"
-    success_url = reverse_lazy('class-based-views_list')
+    success_url = reverse_lazy('django_views:class-based-views_list')
 
 
 class OtherDelete(DeleteView):
     model = OtherModel
     template_name = "django_views/class-based-views/delete_view.html"
-    success_url = reverse_lazy('class-based-views_list')
+    success_url = reverse_lazy('django_views:class-based-views_list')
 
 # Function-based-views
 
@@ -52,7 +52,7 @@ def create_view(request):
 
     if form.is_valid():
         form.save()
-        return redirect(reverse("function-based-views_list"))
+        return redirect(reverse("django_views:function-based-views_list"))
 
     context['form'] = form
     return render(request, "django_views/function-based-views/create_view.html", context)
@@ -74,7 +74,7 @@ def update_view(request, id):
 
     if form.is_valid():
         form.save()
-        return redirect(reverse("function-based-views_list"))
+        return redirect(reverse("django_views:function-based-views_list"))
 
     context = {"form": form}
 
@@ -86,6 +86,6 @@ def delete_view(request, id):
     if request.method == "POST":
         obj.delete()
         # return HttpResponseRedirect("/function-based-views/list")
-        return redirect(reverse("function-based-views_list"))
+        return redirect(reverse("django_views:function-based-views_list"))
 
     return render(request, "django_views/function-based-views/delete_view.html")

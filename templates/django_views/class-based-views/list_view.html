@@ -8,14 +8,14 @@
     <div class="main">
         {%  for object in object_list %}
             <h3>{{ object.title }}</h3>
-            <a href="{% url 'class-based-views_details' object.id %}">Details</a><br>
-            <a href="{% url 'class-based-views_update' object.id %}">Update</a><br>
-            <a href="{% url 'class-based-views_delete' object.id %}">Delete</a><br>
+            <a href="{% url 'django_views:class-based-views_details' object.id %}">Details</a><br>
+            <a href="{% url 'django_views:class-based-views_update' object.id %}">Update</a><br>
+            <a href="{% url 'django_views:class-based-views_delete' object.id %}">Delete</a><br>
             <hr/>
         {% empty %}
             <p>No objects exist for this model</p>
         {% endfor %}
     </div>
-    <a href="{% url 'views_index' %}">Back</a>
+    <a href="{% url 'django_views:index' %}">Back</a>
 </body>
 </html>

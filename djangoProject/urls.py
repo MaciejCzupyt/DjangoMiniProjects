@@ -21,5 +21,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
-    path('views/', include("django_views.urls")),  # Routes all other URLs to django_views
+    path('views/', include(("django_views.urls", "django_views"), namespace='django_views')),
 ]

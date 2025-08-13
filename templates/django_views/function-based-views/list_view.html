@@ -8,15 +8,15 @@
     <div class="main">
         {%  for data in dataset %}
             <h3>{{ data.title }}</h3>
-            <a href="{% url 'function-based-views_details' data.id %}">Details</a><br>
-            <a href="{% url 'function-based-views_update' data.id %}">Update</a><br>
-            <a href="{% url 'function-based-views_delete' data.id %}">Delete</a><br>
+            <a href="{% url 'django_views:function-based-views_details' data.id %}">Details</a><br>
+            <a href="{% url 'django_views:function-based-views_update' data.id %}">Update</a><br>
+            <a href="{% url 'django_views:function-based-views_delete' data.id %}">Delete</a><br>
 {#            Description: {{ data.description }}<br/>#}
             <hr/>
         {% empty %}
             <p>No objects exist for this model</p>
         {% endfor %}
     </div>
-    <a href="{% url 'views_index' %}">Back</a>
+    <a href="{% url 'django_views:index' %}">Back</a>
 </body>
 </html>
