@@ -5,6 +5,7 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoProject.settings')
 django.setup()
 
+# this should not be at the top, despite what IDEs say
 from django_views.models import OtherModel
 
 OtherModel.objects.create(
