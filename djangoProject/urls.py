@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
     path('views/', include(("django_views.urls", "django_views"), namespace='django_views')),
+    path('url_shortener/', include(("url_shortener.urls", "url_shortener"), namespace='url_shortener'))
 ]

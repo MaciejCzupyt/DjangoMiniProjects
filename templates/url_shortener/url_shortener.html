@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener</title>
+</head>
+<body>
+    <h1>URL Shortener</h1>
+    <a href="{% url 'index' %}">Back</a>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Shorten URL</button>
+    </form>
+
+    <h2>Shortened URLs</h2>
+    <ul>
+        {% for entry in data %}
+            <li>{{ entry.url }} -> <a href="u/{{ entry.slug }}">/url_shortener/u/{{ entry.slug }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
